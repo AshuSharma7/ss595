@@ -10,6 +10,8 @@ const String application = "application/";
 
 const String getTle = "tlebyname/";
 
+const String orbitalElement = "orbital_elements/";
+
 //ERROR Message
 const NOINTERNETCONNECTION =
     "No internet connection. Please check your internet connection and try again.";

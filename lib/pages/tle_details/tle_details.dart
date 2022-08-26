@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sih/constants/color.dart';
 import 'package:sih/pages/base/base_view.dart';
 import 'package:sih/pages/base/view_state.dart';
+import 'package:sih/pages/orbital_element/orbital_element_view.dart';
 import 'package:sih/pages/tle_details/tle_details_view_model.dart';
 import 'package:sih/utils/size_util.dart';
 import 'package:sih/widgets/primary_button.dart';
@@ -110,6 +111,22 @@ class TleDetailsPage extends StatelessWidget {
                                             child: Text("Get TLE"),
                                           )),
                                     ),
+                                    const SizedBox(
+                                      height: 20.0,
+                                    ),
+                                    PrimaryButton(
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      OrbitalElementView(
+                                                          satelliteName: e[
+                                                              "SatelliteName"])));
+                                        },
+                                        child: const Center(
+                                          child: Text("Get Orbiatl data"),
+                                        )),
                                   ],
                                 ),
                               )

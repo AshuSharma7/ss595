@@ -2,6 +2,7 @@ import 'package:custom_searchable_dropdown/custom_searchable_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:sih/constants/color.dart';
 import 'package:sih/pages/base/base_view.dart';
+import 'package:sih/pages/orbital_element/orbital_element_view.dart';
 import 'package:sih/pages/sensor_details/sensor_details_view_model.dart';
 import 'package:sih/utils/size_util.dart';
 import 'package:sih/widgets/primary_button.dart';
@@ -21,7 +22,7 @@ class _SensorDetailsState extends State<SensorDetails> {
       return Scaffold(
           body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
+        child: ListView(
           children: [
             const SizedBox(
               height: 50.0,
@@ -171,6 +172,20 @@ class _SensorDetailsState extends State<SensorDetails> {
                   Text(model.tleList[1]),
                 ],
               ),
+            const SizedBox(
+              height: 20.0,
+            ),
+            PrimaryButton(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => OrbitalElementView(
+                              satelliteName: model.sensorId ?? "")));
+                },
+                child: const Center(
+                  child: Text("Get Orbiatl data"),
+                )),
             const SizedBox(
               height: 90.0,
             ),
