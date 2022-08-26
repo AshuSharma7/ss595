@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sih/constants/color.dart';
-import 'package:sih/pages/sattelite_list/satellite_list.dart';
+import 'package:sih/pages/user_tab/user_tab.dart';
 import 'package:sih/utils/size_util.dart';
 import 'package:sih/widgets/text_field.dart';
 
@@ -67,7 +67,7 @@ class LocationPage extends StatelessWidget {
                   Navigator.push(
                       context,
                       CupertinoPageRoute(
-                          builder: (context) => const SatellisteListPage()));
+                          builder: (context) => const UserTabPage()));
                 },
                 child: Align(
                   alignment: Alignment.centerLeft,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sih/constants/color.dart';
 import 'package:sih/di/locator.dart';
-import 'package:sih/pages/user_tab/user_tab.dart';
+import 'package:sih/pages/splash/splash.dart';
 
 void main() {
   setupLocator();
@@ -31,6 +31,6 @@ class MyApp extends StatelessWidget {
               const TextSelectionThemeData(cursorColor: AppColors.primaryColor),
         ),
         themeMode: ThemeMode.dark,
-        home: const UserTabPage());
+        home: const SplashPage());
   }
 }

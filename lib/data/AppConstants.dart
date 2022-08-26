@@ -1,12 +1,14 @@
 /*API Related Constant */
 const APP_NAME = "SIH";
-const baseUrl = "https://tle-backend.herokuapp.com/";
-
-const getTle = "gettle/";
+const baseUrl = "https://celestark.herokuapp.com/";
 
 const String sensor = "sensor/";
 
+const String satellite = "satellite/";
+
 const String application = "application/";
+
+const String getTle = "tlebyname/";
 
 //ERROR Message
 const NOINTERNETCONNECTION =

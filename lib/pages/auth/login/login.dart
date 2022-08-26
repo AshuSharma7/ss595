@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sih/constants/color.dart';
 import 'package:sih/pages/auth/register/register.dart';
-import 'package:sih/pages/location/location_page.dart';
+import 'package:sih/pages/user_tab/user_tab.dart';
 import 'package:sih/utils/size_util.dart';
 import 'package:sih/widgets/loading_indicator.dart';
 import 'package:sih/widgets/text_field.dart';
@@ -63,7 +63,7 @@ class _LoginState extends State<Login> {
                     Navigator.push(
                         context,
                         CupertinoPageRoute(
-                            builder: (context) => const LocationPage()));
+                            builder: (context) => const UserTabPage()));
                   });
                 },
                 child: Container(

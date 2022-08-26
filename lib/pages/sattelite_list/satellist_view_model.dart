@@ -1,22 +1,27 @@
 import 'package:dio/dio.dart';
 import 'package:sih/data/AppConstants.dart';
-import 'package:sih/data/model/get_tle_response_model.dart';
 import 'package:sih/pages/base/base_view_model.dart';
 import 'package:sih/pages/base/view_state.dart';
 
 class SatelliteViewModel extends BaseModel {
-  List<Member> satelliteList = [];
-
+  String? satellistId;
+  String? sensorId;
+  String? applicationId;
   List<dynamic> satellites = [];
   List<dynamic> sensors = [];
+
+  double? lat;
+  double? long;
+
+  List<String> applications = [];
 
   getSatelliteList() async {
     setState(ViewState.Busy);
     final response = await Dio().get(
-      baseUrl + getTle,
+      baseUrl + satellite,
     );
     if (response.statusCode == 200 || response.statusCode == 201) {
-      satellites = response.data["member"];
+      satellites = response.data;
     }
     setState(ViewState.Idle);
   }
@@ -27,7 +32,7 @@ class SatelliteViewModel extends BaseModel {
       baseUrl + sensor,
     );
     if (response.statusCode == 200 || response.statusCode == 201) {
-      sensors = response.data["member"];
+      sensors = response.data;
     }
     setState(ViewState.Idle);
   }
@@ -38,8 +43,39 @@ class SatelliteViewModel extends BaseModel {
       baseUrl + application,
     );
     if (response.statusCode == 200 || response.statusCode == 201) {
-      sensors = response.data["member"];
+      for (int i = 0; i < response.data.length; i++) {
+        if (response.data[i]["application1"] != null &&
+            !applications.contains(response.data[i]["application1"])) {
+          applications.add(response.data[i]["application1"]);
+        }
+        if (response.data[i]["application2"] != null &&
+            !applications.contains(response.data[i]["application2"])) {
+          applications.add(response.data[i]["application2"]);
+        }
+        if (response.data[i]["application3"] != null &&
+            !applications.contains(response.data[i]["application3"])) {
+          applications.add(response.data[i]["application3"]);
+        }
+      }
     }
     setState(ViewState.Idle);
+  }
+
+  getSatelliteBySensor() async {
+    setState(ViewState.Busy);
+    final response = await Dio().get(
+      "$baseUrl$sensor$satellistId",
+    );
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      satellites = response.data;
+    }
+    setState(ViewState.Idle);
+  }
+
+  getTleBySatellite() async {
+    setState(ViewState.Busy);
+    final response = await Dio().get(
+      "$baseUrl$satellite$satellistId",
+    );
   }
 }
